@@ -3,6 +3,7 @@ package com.example.pruebareciclerview
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -25,7 +26,15 @@ class MainActivity : AppCompatActivity() {
         adaptador=AdapterList(pupusa!!)
         recyclerView!!.adapter=adaptador
         recyclerView!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        var btnTotal=findViewById<Button>(R.id.btnTotal)
+        var acumulador=0
+        btnTotal.setOnClickListener{
+            for (pupusaitem in pupusa!!){
+                acumulador=acumulador+pupusaitem.conArroz+pupusaitem.conMaiz
 
+            }
+            btnTotal.text=acumulador.toString()
+        }
 
     }
 }

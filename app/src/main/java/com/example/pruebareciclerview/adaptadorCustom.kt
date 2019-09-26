@@ -40,7 +40,7 @@ class AdapterList(items:ArrayList<Pupusa>): RecyclerView.Adapter<AdapterList.Vie
 
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    class ViewHolder(itemView: View /**/) : RecyclerView.ViewHolder(itemView){
 
 
 
@@ -54,6 +54,12 @@ class AdapterList(items:ArrayList<Pupusa>): RecyclerView.Adapter<AdapterList.Vie
         }
 
 
+
+        interface Recyclerlistener{
+            fun onclickMaiz()
+            fun onclickArroz()
+
+        }
 
         fun asignarDatos(datos: Pupusa) {
             relleno.text=datos.relleno
