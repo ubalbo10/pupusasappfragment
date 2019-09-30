@@ -1,6 +1,8 @@
 package com.example.pruebareciclerview
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -29,12 +31,19 @@ class MainActivity : AppCompatActivity() {
         var btnTotal=findViewById<Button>(R.id.btnTotal)
         var acumulador=0
         btnTotal.setOnClickListener{
-            for (pupusaitem in pupusa!!){
-                acumulador=acumulador+pupusaitem.conArroz+pupusaitem.conMaiz
-
-            }
-            btnTotal.text=acumulador.toString()
+//            for (pupusaitem in pupusa!!){
+//                acumulador=acumulador+pupusaitem.conArroz+pupusaitem.conMaiz
+//
+//            }
+//            btnTotal.text=acumulador.toString()
+            val intentAct=Intent(this,DetalleOrden::class.java)
+            intentAct.putExtra("pupusa",pupusa)
+            startActivity ( intentAct)
         }
+
+
+
+
 
     }
 }
