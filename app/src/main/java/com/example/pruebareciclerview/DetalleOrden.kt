@@ -16,14 +16,19 @@ class DetalleOrden : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalle_orden)
-        recyclerView=findViewById(R.id.recydetalle)
+
         val params=this.intent.extras
 
         var pupusa = params?.getParcelableArrayList<Pupusa>("pupusa")
-        adaptador=AdapterListDetalle(pupusa!!)
-        recyclerView!!.adapter=adaptador
-        recyclerView!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        var fragment=fragmen.newInstance(pupusa!!)
+        val builder = supportFragmentManager
+        .beginTransaction()
+        .add(R.id.fragmenId, fragment, FRAGMENT_TAG)
+         builder.commit()
 
+    }
 
+    companion object{
+        const val FRAGMENT_TAG = "FRAGMENT_TAG"
     }
 }
